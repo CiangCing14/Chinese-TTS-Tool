@@ -30,7 +30,7 @@ def wavesave(pa,da):
     f.writeframes(nd.tobytes())
     f.close()
 
-f=open('test.txt','r');t=f.read();f.close()
+f=open('1.txt','r');t=f.read();f.close()
 l=re.findall('[\\u4e00-\\u9fa5]+',t)
 l=[jieba.lcut(a)for a in l]
 sl=[]

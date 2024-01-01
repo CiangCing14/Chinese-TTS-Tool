@@ -4,8 +4,12 @@ l1=['e','ou','ei','en','eng','a','ao','ai','an','ang','u','uo']
 ls=[]
 for a in l1:
     for b in l0:
+        z=None
+        if a=='uo':
+            if b in['b','p','m','f']:
+                z='o'
         for c in range(5):
-            ls.append('%s%s%d'%(b,a,c+1))
+            ls.append('%s%s%d'%(b,a if not z else z,c+1))
 p="/home/a/Music/SPLIT/Comrade AP's Audio Sources 1"
 pn=p.split('/')[-1]
 if not os.path.exists(pn):os.mkdir(pn)
@@ -68,12 +72,23 @@ for a in os.walk(p):
         n+=1
 
 l0=['d','t','n','l','j','q','x']
-l1=['v','ue','o','un','ong','va','uao','van','vang']
+l1=['u','ue','o','un','iong','va','uao','uan','vang']
 ls=[]
 for a in l1:
     for b in l0:
+        z=None
+        if a=='u':
+            if b=='n':
+                z='v'
+            if b=='l':
+                z='v'
+        if a=='ue':
+            if b=='n':
+                z='ve'
+            if b=='l':
+                z='ve'
         for c in range(5):
-            ls.append('%s%s%d'%(b,a,c+1))
+            ls.append('%s%s%d'%(b,a if not z else z,c+1))
 p="/home/a/Music/SPLIT/Comrade AP's Audio Sources 5"
 pn=p.split('/')[-1]
 if not os.path.exists(pn):os.mkdir(pn)
@@ -90,6 +105,22 @@ for a in l0:
     for c in range(5):
         ls.append('%s%d'%(a,c+1))
 p="/home/a/Music/SPLIT/Comrade AP's Audio Sources 6"
+pn=p.split('/')[-1]
+if not os.path.exists(pn):os.mkdir(pn)
+for a in os.walk(p):
+    a[2].sort()
+    n=0
+    for b in a[2]:
+        if not os.path.exists(pa:='%s/%s.wav'%(pn,ls[n])):
+            shutil.copyfile('%s/%s'%(a[0],b),pa)
+        n+=1
+
+l0=['n']
+ls=[]
+for a in l0:
+    for c in range(5):
+        ls.append('%s%d'%(a,c+1))
+p="/home/a/Music/SPLIT/Comrade AP's Audio Sources 7"
 pn=p.split('/')[-1]
 if not os.path.exists(pn):os.mkdir(pn)
 for a in os.walk(p):
