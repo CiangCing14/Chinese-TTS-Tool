@@ -6,7 +6,7 @@ import numpy as np
 def overlay(l1,l2):
     ll1=len(l1)
     ll2=len(l2)
-    po=int(0.33*44100)
+    po=int(0.4*44100)
     l3=l1[-po:]
     l4=l2[:po]
     l5=[]
