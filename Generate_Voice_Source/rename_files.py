@@ -68,7 +68,7 @@ for a in os.walk(p):
         n+=1
 
 l0=['d','t','n','l','j','q','x']
-l1=['v','ue','o','un','iong','va','uao','van','vang']
+l1=['v','ue','o','un','ong','va','uao','van','vang']
 ls=[]
 for a in l1:
     for b in l0:
@@ -84,7 +84,7 @@ for a in os.walk(p):
         if not os.path.exists(pa:='%s/%s.wav'%(pn,ls[n])):shutil.copyfile('%s/%s'%(a[0],b),pa)
         n+=1
 
-l0=['er','e','ou','ei','en','eng','a','ao','ai','an','ang','wu','wo','wei','wen','weng','wa','wai','wan','wang','yi','ye','you','yin','ying','ya','yao','yan','yang','yu','yue','you','yun','yiong','yva','yvao','yuan','yvang']
+l0=['er','e','ou','ei','en','eng','a','ao','ai','an','ang','wu','wo','wei','wen','weng','wa','wai','wan','wang','yi','ye','you','yin','ying','ya','yao','yan','yang','yu','yue','you','yun','yong','yva','yvao','yuan','yvang']
 ls=[]
 for a in l0:
     for c in range(5):
