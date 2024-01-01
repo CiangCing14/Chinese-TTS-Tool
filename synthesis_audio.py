@@ -3,10 +3,10 @@ from pypinyin import pinyin, lazy_pinyin, Style
 from pydub import AudioSegment
 import numpy as np
 
-def overlay(l1,l2):
+def overlay(l1,l2,nm):
     ll1=len(l1)
     ll2=len(l2)
-    po=int(0.4*44100)
+    po=int(nm*44100)
     l3=l1[-po:]
     l4=l2[:po]
     l5=[]
@@ -68,7 +68,7 @@ for a in range(len(sl)):
         ss=[waveread('RESULT_VOICE_SOURCE/%s.wav'%psl[a][b])for b in range(lsl)]
         s=ss[0]
         for b in range(len(ss)-1):
-            s=overlay(s,ss[b+1])
+            s=overlay(s,ss[b+1],0.4)
             #silence=silence.overlay(ss[b],position=0)
         wavesave(pa,s)
         del ss
@@ -97,7 +97,7 @@ for a in range(len(sl)):
         ss=[waveread('syn1/%s'%sl[a][b])for b in range(len(sl[a]))]
         s=ss[0]
         for b in range(len(ss)-1):
-            s=overlay(s,ss[b+1])
+            s=overlay(s,ss[b+1],0.2)
         wavesave(pa,s)
         del ss
 f=open('skd.dict','w+');f.write(repr(skd));f.close()
