@@ -31,19 +31,44 @@ def wavesave(pa,da):
     f.close()
 
 f=open('1.txt','r');t=f.read();f.close()
-l=re.findall('[\\u4e00-\\u9fa5]+',t)
+l=re.findall('[\\u4e00-\\u9fa5a-zA-Z0-9]+',t)
 l=[jieba.lcut(a)for a in l]
+
 sl=[]
 for a in l:
     for b in a:
         sl.append(b)
+def nums(a):
+    z=list(a)if not isinstance(a,list)else a
+    l0=['0','1','2','3','4','5','6','7','8','9']
+    l1=['ling2','yi1','er4','san1','si4','wu3','liu4','qi1','ba1','jiu3']
+    if not isinstance(a,list):
+        if re.findall('[0-9]+',a)==[a]:
+            for b in range(len(l0)):
+                for c in range(len(z)):
+                    if z[c]==l0[b]:
+                        z[c]=l1[b]
+            return z
+        else:
+            return z
+    else:
+        for b in range(len(l0)):
+            for c in range(len(z)):
+                if z[c]==l0[b]:
+                    z[c]=l1[b]
+        return z
+
 psl=[]
 for a in sl:
-    psl.append(lazy_pinyin(a,style=Style.TONE3,neutral_tone_with_five=True))
-#psl=[[b for b in a]for a in psl]
+    psl.append(lazy_pinyin(a,style=Style.TONE3,neutral_tone_with_five=True)if re.findall('[a-zA-Z0-9]+',a)!=[a]else nums(a.upper()))
+psl=[nums([b for b in a])for a in psl]
 
 nnsl=l.copy()
-nnsl=[[lazy_pinyin(b,style=Style.TONE3,neutral_tone_with_five=True)for b in a]for a in nnsl]
+nnsl=[[lazy_pinyin(b,style=Style.TONE3,neutral_tone_with_five=True)if re.findall('[a-zA-Z0-9]+',b)!=[b]else nums(b.upper())for b in a]for a in nnsl]
+
+#psl=[a.upper()if a in['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']else a for a in psl]
+#nnsl=[[b.upper()if b in['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']else b for b in a]for a in nnsl]
+
 #nnsl=[[[c for c in b]for b in a]for a in nnsl]
 nnsl=[['%s.wav'%''.join(b)for b in a]for a in nnsl]
 
@@ -102,6 +127,7 @@ for a in range(len(sl)):
         del ss
 f=open('skd.dict','w+');f.write(repr(skd));f.close()
 
+quit()
 print('=====')
 f=open('skd.dict','r');skd=eval(f.read());f.close()
 dt=0.5

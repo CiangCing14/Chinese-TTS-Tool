@@ -130,3 +130,18 @@ for a in os.walk(p):
         if not os.path.exists(pa:='%s/%s.wav'%(pn,ls[n])):
             shutil.copyfile('%s/%s'%(a[0],b),pa)
         n+=1
+
+l0=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+ls=[]
+for a in l0:
+    ls.append(a)
+p="/home/a/Music/SPLIT/Comrade AP's Audio Sources 8"
+pn=p.split('/')[-1]
+if not os.path.exists(pn):os.mkdir(pn)
+for a in os.walk(p):
+    a[2].sort()
+    n=0
+    for b in a[2]:
+        if not os.path.exists(pa:='%s/%s.wav'%(pn,ls[n])):
+            shutil.copyfile('%s/%s'%(a[0],b),pa)
+        n+=1
